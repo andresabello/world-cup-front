@@ -13,8 +13,9 @@
                             <div class="form-group">
                                 <label class="label">Name</label>
                                 <!--<p>{{ form }}</p>-->
-                                <input class="form-control" :class="{'is-invalid': errors.has('name')}" type="text" name="name"
-                                       v-model="user.name">
+                                <input class="form-control" :class="{'is-invalid': errors.has('name')}" type="text"
+                                       name="name"
+                                       v-model="user.name" :disabled="type !== 'app'">
                                 <div class="invalid-feedback">
                                     <p v-text="errors.get('name')" v-if="errors.has('name')"></p>
                                 </div>
@@ -23,8 +24,9 @@
                             <div class="form-group">
                                 <label class="label">Email</label>
                                 <!--<p>{{ form }}</p>-->
-                                <input class="form-control" :class="{'is-invalid': errors.has('email')}" type="text" name="email"
-                                       v-model="user.email">
+                                <input class="form-control" :class="{'is-invalid': errors.has('email')}" type="email"
+                                       name="email"
+                                       v-model="user.email" :disabled="type !== 'app'">
                                 <div class="invalid-feedback">
                                     <p v-text="errors.get('email')" v-if="errors.has('email')"></p>
                                 </div>
@@ -33,7 +35,8 @@
                             <div class="form-group">
                                 <label class="label">Phone</label>
                                 <!--<p>{{ form }}</p>-->
-                                <input class="form-control" :class="{'is-invalid': errors.has('phone_number')}" type="text" name="phone"
+                                <input class="form-control" :class="{'is-invalid': errors.has('phone_number')}"
+                                       type="text" name="phone"
                                        v-model="user.phone">
                                 <div class="invalid-feedback">
                                     <p v-text="errors.get('phone_number')" v-if="errors.has('phone_number')"></p>
@@ -58,23 +61,21 @@
 
 <script>
 
-    import {mapGetters, mapActions} from 'vuex'
+    import { mapGetters, mapActions } from 'vuex'
     import Errors from '../../api/classes/pi-errors.js'
-
 
     export default {
         name: 'settings',
-        data() {
+        data () {
             return {
                 errors: new Errors(),
-                success:{
+                success: {
                     active: false,
                     message: ''
                 }
             }
         },
         computed: mapGetters({
-            fields: 'settingsForm',
             action: 'settingsAction',
             checkAction: 'checkAction',
             token: 'token',
@@ -83,29 +84,27 @@
 
         beforeRouteEnter (to, from, next) {
             next(vm => {
-                console.log('fired')
-                let config = {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Authorization': "Bearer " + vm.token
-                    }
-                }
 
                 let data = {}
 
-                if (typeof vm.user !== 'undefined' && vm.user.email === ''){
+                if (typeof vm.user !== 'undefined' && vm.user.email.length === 0) {
                     data.getUser = true
                 }
 
-                // console.log(vm.$cookie.get('refresh_token') )
-                if (vm.$cookie.get('refresh_token')){
+                if (vm.$cookie.get('refresh_token')) {
                     data.refresh_token = vm.$cookie.get('refresh_token')
                 }
 
-                axios.post(vm.checkAction, data, config)
+                if (to.query.user_token) {
+                    data.user_token = to.query.user_token
+                }
+
+                axios.post(vm.checkAction, data)
                     .then((response) => {
+
                         vm.setLoggedIn(true)
-                        if (response.data.user && response.data.user.name !== '') {
+
+                        if (response.data.user && response.data.user.name.length > 0) {
                             vm.setUser(response.data.user)
                             vm.setSettings(response.data.user)
                         }
@@ -121,61 +120,39 @@
 
                         next()
                     })
-                    .catch( ({response}) => {
-                            // alert('PLease Login once again')
-
+                    .catch(({response}) => {
                         next('login')
-                        // vm.notify({
-                        //     message: response.data,
-                        //     type: 'danger'
-                        // })
                     })
             })
         },
-        methods:{
-            onSubmit() {
+        methods: {
+            onSubmit () {
                 let vm = this
                 let data = {
-                    name:  vm.user.name,
-                    email:  vm.user.email,
-                    phone_number:  vm.user.phone
+                    name: vm.user.name,
+                    email: vm.user.email,
+                    phone_number: vm.user.phone
                 }
 
                 axios.post(this.action, data)
                     .then(({data}) => {
-                        vm.success.message = data.message
-                        vm.success.active = true
-
-                        setTimeout(() => {
-                            vm.success.active = false
-                            vm.success.message = ''
-                        }, 3000)
+                        vm.success(data)
                     })
                     .catch(({response}) => {
                         console.log(response)
                         vm.errors.record(response.data.errors)
                     })
             },
-            success(data){
+            success (data) {
                 let vm = this
 
-                if (data.refresh_token){
-                    vm.$cookie.delete('refresh_token')
-                    vm.$cookie.set('refresh_token', data.refresh_token, 1);
-                }
+                vm.success.message = data.message
+                vm.success.active = true
 
-                if (data.access_token){
-                    vm.setToken(data.access_token)
-                    vm.setLoggedIn(true)
-                    vm.setUser(data.user)
-                }
-
-                setTimeout(() =>  {
-                    vm.$router.push({
-                        name: 'home'
-                    })
-                }, 2500)
-
+                setTimeout(() => {
+                    vm.success.active = false
+                    vm.success.message = ''
+                }, 3000)
             },
             ...mapActions({
                 setToken: 'setToken',

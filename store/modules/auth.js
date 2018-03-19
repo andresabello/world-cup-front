@@ -3,6 +3,7 @@ import {env} from '../../includes/env'
 // initial state
 const state = {
     loggedIn: false,
+    type: 'app',
     user: {
         name:'',
         email: '',
@@ -11,6 +12,7 @@ const state = {
     token: localStorage.getItem('token'),
     checkAction: `${env.url}/${env.api}/auth/check`,
     registerAction: `${env.url}/${env.api}/register`,
+    googleAction: `${env.url}/${env.api}/google/auth`,
     loginAction: `${env.url}/${env.api}/login`,
     registerForm: {
         name: {
@@ -62,6 +64,7 @@ const getters = {
     registerAction: state => state.registerAction,
     checkAction: state => state.checkAction,
     loginAction: state => state.loginAction,
+    googleAction: state => state.googleAction,
     token: state => state.token,
     user: state => state.user,
 }
