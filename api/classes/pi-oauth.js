@@ -20,7 +20,6 @@ class OAuth
             }}
             Object.assign(this.Session, has);
         }
-        console.log(this.Session)
     }
 
     logout(){

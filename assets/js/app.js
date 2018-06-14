@@ -11,6 +11,8 @@ import bootstrap from '../../includes/pi-bootstrap.js'
 import Register from '../../components/auth/Register.vue'
 import Settings from '../../components/pages/Settings.vue'
 import Dashboard from '../../components/pages/Dashboard.vue'
+import Standings from '../../components/pages/Standings.vue'
+import News from '../../components/pages/News.vue'
 
 window.axios = axios
 
@@ -67,6 +69,16 @@ const router = new VueRouter({
             path: '/login',
             name: 'login',
             component: Login
+        },
+        {
+            path: '/posiciones',
+            name: 'standings',
+            component: Standings
+        },
+        {
+            path: '/noticias',
+            name: 'news',
+            component: News
         },
     ]
 })

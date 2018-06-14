@@ -1,7 +1,7 @@
 {
-  "name": "reminder-app",
+  "name": "world-cup-app",
   "version": "1.0.0",
-  "description": "Reminder App",
+  "description": "World Cup App",
   "main": "app.js",
   "dependencies": {
     "axios": "^0.18.0",

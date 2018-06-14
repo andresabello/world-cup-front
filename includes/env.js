@@ -1,5 +1,5 @@
 const env = {
-    url: 'http://reminder-app.localhost',
+    url: 'http://world-cup-api.localhost',
     api: 'api/v1'
 }
 

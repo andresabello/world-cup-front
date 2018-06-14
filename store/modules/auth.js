@@ -81,7 +81,6 @@ const actions = {
         commit('setUserName', name)
         commit('setUserEmail', email)
         commit('setUserPhone', phone_number)
-
     }
 }
 

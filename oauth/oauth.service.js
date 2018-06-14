@@ -1,3 +1,4 @@
+import axios from 'axios'
 import {default as API} from './routes.js'
 
 export default {
