@@ -1,5 +1,5 @@
 const env = {
-    url: 'http://world-cup-api.localhost',
+    url: 'https://api.futbolseleccioncolombia.com/',
     api: 'api/v1'
 }
 

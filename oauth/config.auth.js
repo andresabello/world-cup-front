@@ -1,21 +1,21 @@
-export const STATUS = 'local'
+export const STATUS = 'production'
 
 let secrets = {
     API_LOCAL: '0jrTKqBqZ8Aj3QGnkfKnNe0SSt4CeJPPugZgbqY8',
     API_STAGING: 'secret',
-    API_PRODUCTION: 'secret'
+    API_PRODUCTION: '0jrTKqBqZ8Aj3QGnkfKnNe0SSt4CeJPPugZgbqY8'
 }
 
 let keys = {
     API_LOCAL: 'Test',
-    API_STAGING: 1,
-    API_PRODUCTION: 1
+    API_STAGING: 'Test',
+    API_PRODUCTION: 'Test'
 }
 
 export const BASE_URL = {
     'local': 'http://reminder-app.localhost/',
     'staging': 'http://reminder-app.piboutique.com/',
-    'production': 'https://reminder.com/',
+    'production': 'http://api.futbolseleccioncolombia.com',
 }
 
 export const API_URL = BASE_URL[STATUS] + 'api/v1/'
