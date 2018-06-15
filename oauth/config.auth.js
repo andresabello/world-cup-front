@@ -15,7 +15,7 @@ let keys = {
 export const BASE_URL = {
     'local': 'http://world-cup-api.localhost/',
     'staging': 'http://world-cup-api.piboutique.com/',
-    'production': 'http://api.futbolseleccioncolombia.com',
+    'production': 'http://api.futbolseleccioncolombia.com/',
 }
 
 export const API_URL = BASE_URL[STATUS] + 'api/v1/'
