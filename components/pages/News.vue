@@ -1,12 +1,12 @@
 <template>
     <div class="news-wrapper">
         <div class="item-wrapper" v-for="item in news">
-            <a :href="item.source"><h2>{{item.title}}</h2></a>
+            <a :href="item.source"><h2 class="item-title">{{item.title}}</h2></a>
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-md-4">
                     <img :src="item.image" :alt="item.title" class="img-fluid">
                 </div>
-                <div class="col-sm-8">
+                <div class="col-md-8">
                     <p>
                         {{item.description}}
                     </p>
@@ -40,6 +40,10 @@
         margin: 40px auto;
         .item-wrapper {
             margin: 40px auto;
+
+            .item-title {
+                color:#27BCC2;
+            }
         }
     }
 </style>

@@ -1,9 +1,10 @@
 <template>
     <div>
         <navigation></navigation>
-        <div class="row">
-            <div class="container">
-                <div class="col-sm-8 offset-sm-4">
+
+        <div class="container-fluid">
+            <div class="row flex-xl-nowrap">
+                <div class="col-12">
                     <ul class="pi-menu">
                         <li>
                             <router-link :to="{ name: 'news' }">
@@ -27,9 +28,13 @@
                     </ul>
                 </div>
 
-                <router-view></router-view>
             </div>
 
+            <div class="row">
+                <div class="col-12 flex-xl-nowrap">
+                    <router-view></router-view>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -52,11 +57,27 @@
 <style lang="scss">
     .pi-menu {
         list-style: none;
-        padding: 0;
+        padding: 0 30px;
         margin: 40px auto;
         li {
+            text-align: center;
             float: left;
-            margin-left: 20px;
+            margin-left: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+
+            span {
+                color: #D62332;
+                padding-bottom: 5px;
+            }
+
+            &:first-child{
+                margin-left: 10px;
+            }
+
+            &.active {
+                border-bottom: 1px solid #11365A;
+            }
         }
     }
 </style>
