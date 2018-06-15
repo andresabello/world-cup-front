@@ -8,9 +8,8 @@ export default class Group {
 
     getGroups () {
         return new Promise( (resolve, reject) => {
-            axios.get(`${this.baseUrl}/groups`)
+            axios.get(`${this.baseUrl}groups`)
                 .then(({data}) => {
-                    console.log(data)
                     resolve(data.groups)
                 })
                 .catch((errors) => {

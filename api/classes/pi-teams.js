@@ -1,22 +1,24 @@
 import axios from 'axios'
 
-export default class News {
+export default class Team {
 
     constructor (baseUrl) {
         this.baseUrl = baseUrl
     }
 
-    getNews (query) {
+    getTeams() {
         return new Promise( (resolve, reject) => {
-            axios.get(`${this.baseUrl}news?team=${query}`)
+            axios.get(`${this.baseUrl}teams`)
                 .then(({data}) => {
                     console.log(data)
-                    resolve(data.news)
+                    resolve(data.teams)
                 })
                 .catch((errors) => {
                     console.log(errors.response)
                     reject(errors)
                 })
         })
+
     }
+
 }

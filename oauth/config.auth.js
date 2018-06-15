@@ -1,4 +1,4 @@
-export const STATUS = 'production'
+export const STATUS = 'local'
 
 let secrets = {
     API_LOCAL: '0jrTKqBqZ8Aj3QGnkfKnNe0SSt4CeJPPugZgbqY8',
@@ -13,8 +13,8 @@ let keys = {
 }
 
 export const BASE_URL = {
-    'local': 'http://reminder-app.localhost/',
-    'staging': 'http://reminder-app.piboutique.com/',
+    'local': 'http://world-cup-api.localhost/',
+    'staging': 'http://world-cup-api.piboutique.com/',
     'production': 'http://api.futbolseleccioncolombia.com',
 }
 

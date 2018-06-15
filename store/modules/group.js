@@ -1,9 +1,10 @@
-import { env } from '../../includes/env'
+import {API_URL} from '../../oauth/config.auth'
 import Group from '../../api/classes/pi-groups'
 
 // initial state
 const state = {
-    groupService: new Group(`${env.url}/${env.api}`),
+    groupService: new Group(`${API_URL}`),
+
     groups: []
 }
 

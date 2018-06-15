@@ -2,13 +2,15 @@
     <header class="navigation-wrapper">
         <nav class="navbar navbar-dark bg-dark">
             <div class="row flex-xl-nowrap">
-                <div class="col-4">
-                    <a class="navbar-brand" href="/">Mundial FIFA 2018</a>
+                <div class="col-md-4">
+                    <a class="navbar-brand" href="/">Futbol Seleccion Colombia</a>
                 </div>
-                <div class="col-8">
-                    <select name="Team" id="">
-                        <option value=""></option>
-                    </select>
+                <div class="col-md-8">
+                    <label>
+                        <select class="form-control">
+                            <option value="" v-for="team in teams">{{team}}</option>
+                        </select>
+                    </label>
                 </div>
             </div>
         </nav>
@@ -16,10 +18,21 @@
 </template>
 
 <script>
+    import { mapGetters, mapActions } from 'vuex'
+
     export default {
+        name: 'navigation',
         mounted () {
-            console.log('Only see this once logged in')
-        }
+            this.getTeams()
+        },
+        computed: mapGetters({
+            teams: 'getTeamList'
+        }),
+        methods: {
+            ...mapActions({
+                getTeams: 'getAllTeams',
+            })
+        },
     }
 </script>
 
@@ -27,7 +40,7 @@
     .navigation-wrapper {
         width: 100%;
         .bg-dark {
-            background-color:#11365A !important;
+            background-color: #11365A !important;
         }
     }
 </style>

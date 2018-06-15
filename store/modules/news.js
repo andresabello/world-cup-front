@@ -1,9 +1,9 @@
-import { env } from '../../includes/env'
 import News from '../../api/classes/pi-news'
+import {API_URL} from '../../oauth/config.auth'
 
 // initial state
 const state = {
-    newsService: new News(`${env.url}/${env.api}`),
+    newsService: new News(`${API_URL}`),
     news: []
 }
 
