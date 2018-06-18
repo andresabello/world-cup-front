@@ -6,11 +6,10 @@ export default class News {
         this.baseUrl = baseUrl
     }
 
-    getNews (query) {
+    getNews (query, page) {
         return new Promise( (resolve, reject) => {
-            axios.get(`${this.baseUrl}news?team=${query}`)
+            axios.get(`${this.baseUrl}news?team=${query}&page=${page}`)
                 .then(({data}) => {
-                    console.log(data)
                     resolve(data.news)
                 })
                 .catch((errors) => {

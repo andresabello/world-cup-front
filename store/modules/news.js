@@ -4,7 +4,7 @@ import {API_URL} from '../../oauth/config.auth'
 // initial state
 const state = {
     newsService: new News(`${API_URL}`),
-    news: []
+    news: [],
 }
 
 // getters
@@ -14,9 +14,9 @@ const getters = {
 
 // actions
 const actions = {
-    getAllNews ({commit, state}, query) {
+    getAllNews ({commit, state}, {query, page}) {
         return new Promise((resolve, reject) => {
-            state.newsService.getNews(query)
+            state.newsService.getNews(query, page)
                 .then((news) => {
                     commit('setNews', news)
                     resolve(news)

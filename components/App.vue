@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="app-wrapper">
         <navigation></navigation>
 
         <div class="container-fluid">
@@ -55,6 +55,9 @@
 </script>
 
 <style lang="scss">
+    .app-wrapper {
+        margin-bottom: 140px;
+    }
     .pi-menu {
         list-style: none;
         padding: 0 30px;

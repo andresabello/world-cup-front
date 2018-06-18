@@ -1,67 +1,73 @@
 <template>
-    <div class="standings">
-        <h2>{{ group.name }}</h2>
-        <table>
-            <colgroup>
-                <col width="6%">
-                <col width="200px">
-                <col width="8%">
-                <col width="8%">
-                <col width="8%">
-                <col width="8%">
-                <col width="8%">
-                <col width="8%">
-                <col width="8%">
-                <col width="8%">
-            </colgroup>
-            <thead>
-            <tr>
-                <th><abbr title="Posición">Pos</abbr></th>
-                <th>Equipo</th>
-                <th><abbr title="Jugado">PJ</abbr></th>
-                <th><abbr title="Victorias">PG</abbr></th>
-                <th><abbr title="Empates">PE</abbr></th>
-                <th><abbr title="Derrotas">PP</abbr></th>
-                <th><abbr title="Diferencia de goles">DG</abbr>
-                </th>
-                <th><abbr title="Puntos">PT</abbr></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="team-614 bottom-section" v-for="(team, key) in group.teams">
-                <td>{{ key + 1 }}</td>
-                <td>
-                    <div class="flag-wrapper">
-                        <img :src="team.flag" :alt="team.name" class="img-responsive">&nbsp;{{ team.name }}
+    <div class="group-wrapper">
+        <h4>{{ group.name }}</h4>
+        <div class="row">
+            <div class="col-1">
+                <abbr title="Posición">Pos</abbr>
+            </div>
+            <div class="col-5">
+                Equipo
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-2">
+                        <abbr title="Jugado">PJ</abbr>
                     </div>
-                </td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            </tbody>
-        </table>
+                    <div class="col-2">
+                        <abbr title="Victorias">PG</abbr>
+                    </div>
+                    <div class="col-2">
+                        <abbr title="Empates">PE</abbr>
+                    </div>
+                    <div class="col-2">
+                        <abbr title="Derrotas">PP</abbr>
+                    </div>
+                    <div class="col-2">
+                        <abbr title="Diferencia de goles">DG</abbr>
+                    </div>
+                    <div class="col-2">
+                        <abbr title="Puntos">PT</abbr>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <team :team="team" v-for="(team) in group.teams" :key="team.id"></team>
     </div>
 </template>
 
 <script>
+    import Team from './Team.vue'
+
     export default {
         name: 'group',
-        props: ['group']
+        props: ['group'],
+        components: {
+            Team
+        }
     }
 </script>
 
 <style lang="scss">
-    .standings {
-        margin: 40px auto;
+    .group-wrapper {
+        padding: 4px 0;
+        margin-bottom: 40px;
+        &:first-child {
+            margin-bottom: 20px;
+        }
+        h4 {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .team-name {
+            font-size: .80rem;
+        }
 
         .flag-wrapper {
-            img{
+            img {
                 width: 30px;
             }
         }
+
     }
 </style>

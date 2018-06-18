@@ -8,9 +8,7 @@ export default
         Vue.prototype.$oauth = new OAuth();
 
         Vue.mixin({
-            mounted(){
-                console.log("Bootstrapping")
-            }
+            mounted(){}
         })
     }
 }

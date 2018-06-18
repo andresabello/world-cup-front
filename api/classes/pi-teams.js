@@ -10,7 +10,6 @@ export default class Team {
         return new Promise( (resolve, reject) => {
             axios.get(`${this.baseUrl}teams`)
                 .then(({data}) => {
-                    console.log(data)
                     resolve(data.teams)
                 })
                 .catch((errors) => {
@@ -18,7 +17,5 @@ export default class Team {
                     reject(errors)
                 })
         })
-
     }
-
 }
