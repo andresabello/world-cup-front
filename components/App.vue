@@ -58,7 +58,6 @@
     body {
         font-family: 'Lato', sans-serif;
     }
-    
     .app-wrapper {
         margin-bottom: 140px;
     }

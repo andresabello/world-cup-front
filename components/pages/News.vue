@@ -1,7 +1,7 @@
 <template>
     <div class="news-wrapper">
         <div class="item-wrapper" v-for="item in news.data">
-            <a :href="item.source"><h2 class="item-title">{{item.title}}</h2></a>
+            <a :href="item.source" target="_blank"><h2 class="item-title">{{item.title}}</h2></a>
             <div class="row">
                 <div class="col-md-4">
                     <img :src="item.image" :alt="item.title" class="img-fluid news-image">
