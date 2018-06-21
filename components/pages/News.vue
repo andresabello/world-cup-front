@@ -66,7 +66,6 @@
             margin: 40px auto;
 
             .item-title {
-                color: #27BCC2;
                 margin-bottom: 20px;
             }
 

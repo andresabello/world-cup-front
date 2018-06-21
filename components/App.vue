@@ -70,7 +70,7 @@
             cursor: pointer;
 
             span {
-                color: #D62332;
+                color: #27BCC2;
                 padding-bottom: 5px;
             }
 

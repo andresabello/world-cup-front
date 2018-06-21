@@ -56,7 +56,7 @@
             tied () {
                 if (typeof this.currentTeam !== 'undefined' && this.currentTeam !== null) {
                     let allMatches = this.team.home_matches.concat(this.team.away_matches)
-                    return allMatches.filter(match => match.winner_id === 0).length
+                    return allMatches.filter(match => match.winner_id === null && match.finished).length
                 }
 
                 return 0
