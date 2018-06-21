@@ -18,12 +18,12 @@
                                 <span class="nav-link-text">Posiciones</span>
                             </router-link>
                         </li>
-                        <li>
-                            <router-link :to="{ name: 'playoffs' }">
-                                <i class="fa fa-fw fa-area-chart"></i>
-                                <span class="nav-link-text">Finales</span>
-                            </router-link>
-                        </li>
+                        <!--<li>-->
+                            <!--<router-link :to="{ name: 'playoffs' }">-->
+                                <!--<i class="fa fa-fw fa-area-chart"></i>-->
+                                <!--<span class="nav-link-text">Finales</span>-->
+                            <!--</router-link>-->
+                        <!--</li>-->
 
                     </ul>
                 </div>
